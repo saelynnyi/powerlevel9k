@@ -1526,13 +1526,12 @@ prompt_date() {
 # todo.sh: shows the number of tasks in your todo.sh file
 prompt_todo() {
   if $(hash todo.sh 2>&-); then
-    count=$(todo.sh ls | egrep "TODO: [0-9]+ of ([0-9]+) tasks shown" | awk '{ print $4 }')
+    count=$(todo | egrep "TODO: [0-9]+ of ([0-9]+) tasks shown" | awk '{ print $4 }')
     if [[ "$count" = <-> ]]; then
       "$1_prompt_segment" "$0" "$2" "grey50" "$DEFAULT_COLOR" "$count" 'TODO_ICON'
     fi
   fi
 }
-
 ################################################################
 # VCS segment: shows the state of your repository, if you are in a folder under
 # version control
